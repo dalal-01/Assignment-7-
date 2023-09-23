@@ -80,10 +80,12 @@ const App = () => {
   }
 
 
-  useEffect(() => {
-
-    const storageToDoList = JSON.parse(localStorage.getItem("ToDoList"));
-    setToDoList(storageToDoList)
+ useEffect(() => {
+    if(localStorage.length==0)
+    localStorage.setItem("ToDoList", JSON.stringify(toDoList));
+else
+    {const storageToDoList = JSON.parse(localStorage.getItem("ToDoList"));
+    setToDoList(storageToDoList)}
   }, []);
 
 
